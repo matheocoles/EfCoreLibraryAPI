@@ -1,0 +1,25 @@
+1. Créer un projet web d'API Web .NET 8 en laissant les réglages par défaut
+2. Créer les dossiers Models / DTO / Endpoints / Migrations
+3. Copier-coller vos entités + le dbContext + les migrations du projet de démo EF
+4. Modifier le Program.cs pour reprendre le contenu du cours tout remplacer
+5. Installer EF / EFDesign / EF SQL Server + FastEndpoints + FastEndpoints.Swagger
+6. Démarrer et tester le projet
+7. Ecrire les Endpoints + les DTO de Auteur
+
+Endpoints :
+	Author :
+		CreateAuthorEndpoint
+		GetAllAuthorsEndpoint  (WithoutRequest, Response : Liste des authors)
+		GetAuthorEndpoint      (GetAuthorRequest -> Id)
+		UpdateAuthorEndpoint   (Id dans la route)
+		DeleteAuthorEndpoint   (DeleteAuthorRequest -> Id dans la route)
+DTO : 
+	Author : 
+		Request :
+			CreateAuthorDto -> Name, FirstName
+			UpdateAuthorDto -> Id, Name, FirstName
+		Response :
+			GetAuthorDto -> Id, Name, FirstName
+	
+	
+	
