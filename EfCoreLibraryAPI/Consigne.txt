@@ -10,16 +10,16 @@ Endpoints :
 	Author :
 		CreateAuthorEndpoint
 		GetAllAuthorsEndpoint  (WithoutRequest, Response : Liste des authors)
-		GetAuthorEndpoint      (GetAuthorRequest -> Id)
-		UpdateAuthorEndpoint   (Id dans la route)
-		DeleteAuthorEndpoint   (DeleteAuthorRequest -> Id dans la route)
+		GetAuthorEndpoint      (GetAuthorRequest -> ID)
+		UpdateAuthorEndpoint   (ID dans la route)
+		DeleteAuthorEndpoint   (DeleteAuthorRequest -> ID dans la route)
 DTO : 
 	Author : 
 		Request :
 			CreateAuthorDto -> Name, FirstName
-			UpdateAuthorDto -> Id, Name, FirstName
+			UpdateAuthorDto -> ID, Name, FirstName
 		Response :
-			GetAuthorDto -> Id, Name, FirstName
+			GetAuthorDto -> ID, Name, FirstName
 	
 	
 	

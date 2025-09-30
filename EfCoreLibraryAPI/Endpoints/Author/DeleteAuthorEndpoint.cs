@@ -12,22 +12,26 @@ public class DeleteAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 {
     public override void Configure()
     {
-        Delete("/api/authors/{id}");
+        Delete("/api/authors/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
     
     public override async Task HandleAsync(DeleteAuthorRequest req, CancellationToken ct)
     {
-        var author = await libraryDbContext.Authors.FirstOrDefaultAsync(a => a.Id == req.Id, ct);
+        Models.Author? authorToDelete = await libraryDbContext
+            .Authors
+            .SingleOrDefaultAsync(a => a.Id == req.Id, cancellationToken: ct);
 
-        if (author == null)
+        if (authorToDelete == null)
         {
+            Console.WriteLine($"Aucun author avec l'ID {req.Id} trouvé.");
             await Send.NotFoundAsync(ct);
+            return;
         }
 
-        libraryDbContext.Authors.Remove(author);
+        libraryDbContext.Authors.Remove(authorToDelete);
         await libraryDbContext.SaveChangesAsync(ct);
 
-        await Send.OkAsync(author, ct);
+        await Send.NoContentAsync(ct);
     }
 }

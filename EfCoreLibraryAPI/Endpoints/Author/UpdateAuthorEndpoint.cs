@@ -22,7 +22,7 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<U
 
         if (authorToEdit == null)
         {
-            Console.WriteLine($"Aucun livre avec l'ID {req.Id} trouvé.");
+            Console.WriteLine($"Aucun author avec l'ID {req.Id} trouvé.");
             await Send.NotFoundAsync(ct);
             return;
         }
@@ -35,8 +35,8 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<U
         GetAuthorDto responseDto = new()
         {
             Id = req.Id,
-            Name = authorToEdit.Name,
-            FirstName = authorToEdit.FirstName
+            Name = req.Name,
+            FirstName = req.FristName,
         };
 
         await Send.OkAsync(responseDto, ct);

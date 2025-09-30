@@ -14,7 +14,7 @@ public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext) : Endpoint
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        var authors = await libraryDbContext.Authors
+        List<GetAuthorDto> responseDto = await libraryDbContext.Authors
             .Select(a => new GetAuthorDto
                 {
                     Id = a.Id,
@@ -23,6 +23,6 @@ public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext) : Endpoint
                 }
             ).ToListAsync(ct);
 
-        await Send.OkAsync(authors, ct);
+        await Send.OkAsync(responseDto, ct);
     }
 }
