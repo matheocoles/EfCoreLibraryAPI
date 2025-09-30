@@ -12,22 +12,26 @@ public class DeleteUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<De
 {
     public override void Configure()
     {
-        Delete("/api/users/{id}");
+        Delete("/api/users/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(DeleteUserRequest req, CancellationToken ct)
     {
-        var users = await libraryDbContext.Users.FirstOrDefaultAsync(a => a.Id == req.Id);
+        Models.User? userToDelete = await libraryDbContext
+            .Users
+            .SingleOrDefaultAsync(a => a.Id == req.Id, cancellationToken: ct);
 
-        if (users == null)
+        if (userToDelete == null)
         {
+            Console.WriteLine($"Aucun utilisateur avec l'ID {req.Id} trouvé.");
             await Send.NotFoundAsync(ct);
+            return;
         }
         
-        libraryDbContext.Users.Remove(users);
+        libraryDbContext.Users.Remove(userToDelete);
         await libraryDbContext.SaveChangesAsync(ct);
         
-        await Send.OkAsync(users, ct);
+        await Send.NoContentAsync(ct);
     }
 }

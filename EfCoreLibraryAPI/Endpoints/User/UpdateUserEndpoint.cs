@@ -9,35 +9,39 @@ public class UpdateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Up
 {
     public override void Configure()
     {
-        Put("/api/users/{id}");
+        Put("/api/users/{@id}", x => new {x.Id});
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateUserDto req, CancellationToken ct)
     {
-        var user = await libraryDbContext.Users.FirstOrDefaultAsync(a => a.Id == req.Id);
+        Models.User? userToEdit = await libraryDbContext
+            .Users
+            .SingleOrDefaultAsync(a => a.Id == req.Id, cancellationToken: ct);
 
-        if (user == null)
+        if (userToEdit == null)
         {
+            Console.WriteLine($"Aucun author avec l'ID {req.Id} trouvé.");
             await Send.NotFoundAsync(ct);
+            return;
         }
         
-        user.Name = req.Name;
-        user.FirstName = req.FirstName;
-        user.Email = req.Email;
-        user.Birthday = req.Birthday;
+        userToEdit.Name = req.Name;
+        userToEdit.FirstName = req.FirstName;
+        userToEdit.Email = req.Email;
+        userToEdit.Birthday = req.Birthday;
         
         await libraryDbContext.SaveChangesAsync(ct);
 
-        var getUserDto = new GetUserDto()
+        GetUserDto responseDto = new ()
         {
-            Id = user.Id,
-            Name = user.Name,
-            FirstName = user.FirstName,
-            Email = user.Email,
-            Birthday = user.Birthday
+            Id = req.Id,
+            Name = req.Name,
+            FirstName = req.FirstName,
+            Email = req.Email,
+            Birthday = req.Birthday
         };
 
-        await Send.OkAsync(getUserDto, ct);
+        await Send.OkAsync(responseDto, ct);
     }
 }

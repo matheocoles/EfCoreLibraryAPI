@@ -24,7 +24,7 @@ public class DeleteAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 
         if (authorToDelete == null)
         {
-            Console.WriteLine($"Aucun author avec l'ID {req.Id} trouvé.");
+            Console.WriteLine($"Aucun auteur avec l'ID {req.Id} trouvé.");
             await Send.NotFoundAsync(ct);
             return;
         }

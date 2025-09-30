@@ -14,7 +14,7 @@ public class CreateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
 
     public override async Task HandleAsync(CreateUserDto req, CancellationToken ct)
     {
-        var user = new Models.User
+        Models.User user = new()
         {
             Name = req.Name,
             FirstName = req.Firstname,
@@ -24,15 +24,17 @@ public class CreateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
         
         libraryDbContext.Users.Add(user);
         await libraryDbContext.SaveChangesAsync(ct);
+        
+        Console.WriteLine("Utilisateur créé avec succès !");
 
-        var getUserDto = new GetUserDto()
+        GetUserDto responseDto = new ()
         {
             Id = user.Id,
-            Name = user.Name,
-            Email = user.Email,
-            Birthday = user.Birthday
+            Name = req.Name,
+            Email = req.Email,
+            Birthday = req.Birthday
         };
 
-        await Send.OkAsync(getUserDto, ct);
+        await Send.OkAsync(responseDto, ct);
     }
 }
