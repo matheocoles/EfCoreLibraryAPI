@@ -6,36 +6,40 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Author;
 
-public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<UpdateAuthorDto, GetAuthorDto> 
+public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<UpdateAuthorDto, GetAuthorDto>
 {
     public override void Configure()
     {
-        Put("/api/authors/{id}");
+        Put("/api/authors/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)
     {
-        var author = await libraryDbContext.Authors.FirstOrDefaultAsync(a =>  a.Id == req.Id);
+        Models.Author? authorToEdit = await libraryDbContext
+            .Authors
+            .SingleOrDefaultAsync(a => a.Id == req.Id, cancellationToken: ct);
 
-        if (author == null)
+        if (authorToEdit == null)
         {
+            Console.WriteLine($"Aucun livre avec l'ID {req.Id} trouvé.");
             await Send.NotFoundAsync(ct);
+            return;
         }
-        
-        author.Name = req.Name;
-        author.FirstName = req.FristName;
-        
+
+        authorToEdit.Name = req.Name;
+        authorToEdit.FirstName = req.FristName;
+
         await libraryDbContext.SaveChangesAsync(ct);
-        
-        var getAuthorDto = new GetAuthorDto()
+
+        GetAuthorDto responseDto = new()
         {
-            Id = author.Id,
-            Name = author.Name,
-            FirstName = author.FirstName
+            Id = req.Id,
+            Name = authorToEdit.Name,
+            FirstName = authorToEdit.FirstName
         };
 
-        await Send.OkAsync(getAuthorDto, ct);
+        await Send.OkAsync(responseDto, ct);
     }
 
 }

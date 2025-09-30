@@ -160,3 +160,4 @@ C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\
 C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\EfCoreLibraryAPI.pdb
 C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\EfCoreLibraryAPI.genruntimeconfig.cache
 C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\ref\EfCoreLibraryAPI.dll
+C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\EfCoreLibraryAPI.sourcelink.json

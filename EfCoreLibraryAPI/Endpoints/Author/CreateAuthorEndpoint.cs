@@ -14,7 +14,7 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)
     {
-        var author = new Models.Author
+        Models.Author author = new Models.Author
         {
             Name = req.Name,
             FirstName = req.FirstName
@@ -22,14 +22,16 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
         
         libraryDbContext.Authors.Add(author);
         await libraryDbContext.SaveChangesAsync(ct);
+        
+        Console.WriteLine("Auteur créé avec succès !");
 
-        var getAuthorDto = new GetAuthorDto()
+        GetAuthorDto responseDto = new ()
         {
             Id = author.Id,
             Name = req.Name,
             FirstName = req.FirstName
         };
 
-        await Send.OkAsync(getAuthorDto, ct);
+        await Send.OkAsync(responseDto, ct);
     }
 }
