@@ -1,6 +1,4 @@
-﻿using EfCoreLibraryAPI.DTO.Actor.Request;
-using EfCoreLibraryAPI.DTO.Actor.Response;
-using EfCoreLibraryAPI.DTO.Book.Request;
+﻿using EfCoreLibraryAPI.DTO.Book.Request;
 using EfCoreLibraryAPI.DTO.Book.Response;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
