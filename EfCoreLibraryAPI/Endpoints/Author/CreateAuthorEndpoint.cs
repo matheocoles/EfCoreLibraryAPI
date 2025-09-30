@@ -14,7 +14,7 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)
     {
-        Models.Author author = new Models.Author
+        Models.Author author = new ()
         {
             Name = req.Name,
             FirstName = req.FirstName
