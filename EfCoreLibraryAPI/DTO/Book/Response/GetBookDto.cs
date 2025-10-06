@@ -1,6 +1,8 @@
-﻿namespace EfCoreLibraryAPI.DTO.Book.Response;
+﻿using FastEndpoints;
 
-public class GetBookDto
+namespace EfCoreLibraryAPI.DTO.Book.Response;
+
+public class GetBookDto :IMapper
 {
     public int Id {get; set;}
     public string? Title {get; set;}

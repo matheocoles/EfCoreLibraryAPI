@@ -1,10 +1,12 @@
-﻿using EfCoreLibraryAPI.DTO.Loan.Request;
+﻿using EfCoreLibraryAPI.DTO.Book.Response;
+using EfCoreLibraryAPI.DTO.Loan.Request;
 using EfCoreLibraryAPI.DTO.Loan.Response;
 using FastEndpoints;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateLoanDto, GetLoanDto>
+public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateLoanDto, GetLoanDto, GetBookDto>
 {
     public override void Configure()
     {
@@ -14,11 +16,35 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
 
     public override async Task HandleAsync(CreateLoanDto req, CancellationToken ct)
     {
+        List<Models.Book> book = await libraryDbContext
+            .Books
+            .Select(b => new Models.Book { Id = b.Id, Title = b.Title })
+            .ToListAsync();
+        
+        if (book == null)
+        {
+            await Send.NotFoundAsync();
+            return;
+        }
+        
+        List<Models.User> user = await libraryDbContext
+            .Users
+            .Select(u => new Models.User { Id = u.Id, Name = u.Name, FirstName = u.FirstName})
+            .ToListAsync();
+        
+        if (user == null)
+        {
+            await Send.NotFoundAsync();
+            return;
+        }
+        
         Models.Loan loan = new ()
         {
             Date = req.Date,
             PlannedReturningDate = req.PlannedReturningDate,
-            EffectiveReturningDate = req.EffectiveReturningDate
+            EffectiveReturningDate = req.EffectiveReturningDate,
+            BookId = req.BookId,
+            UserId = req.UserId
         };
         
         libraryDbContext.Loans.Add(loan);
@@ -31,7 +57,9 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             Id = loan.Id,
             Date = req.Date,
             PlannedReturningDate = req.PlannedReturningDate,
-            EffectiveReturningDate = req.EffectiveReturningDate
+            EffectiveReturningDate = req.EffectiveReturningDate,
+            BookId = req.BookId,
+            UserId = req.UserId
         };
 
         await Send.OkAsync(responseDto, ct);

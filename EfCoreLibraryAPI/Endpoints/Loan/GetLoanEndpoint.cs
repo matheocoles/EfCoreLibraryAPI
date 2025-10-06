@@ -34,7 +34,9 @@ public class GetLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetLo
             Id = req.Id,
             Date = loan.Date,
             PlannedReturningDate = loan.PlannedReturningDate,
-            EffectiveReturningDate = loan.EffectiveReturningDate
+            EffectiveReturningDate = loan.EffectiveReturningDate,
+            BookId = loan.BookId,
+            UserId = loan.UserId
         };
 
         await Send.OkAsync(responseDto, ct);

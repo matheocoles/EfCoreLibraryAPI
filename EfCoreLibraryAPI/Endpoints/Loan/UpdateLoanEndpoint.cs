@@ -26,10 +26,34 @@ public class UpdateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             await Send.NotFoundAsync(ct);
             return;
         }
+        
+        List<Models.Book> book = await libraryDbContext
+            .Books
+            .Select(b => new Models.Book { Id = b.Id, Title = b.Title })
+            .ToListAsync();
+        
+        if (book == null)
+        {
+            await Send.NotFoundAsync();
+            return;
+        }
+        
+        List<Models.User> user = await libraryDbContext
+            .Users
+            .Select(u => new Models.User { Id = u.Id, Name = u.Name, FirstName = u.FirstName})
+            .ToListAsync();
+        
+        if (user == null)
+        {
+            await Send.NotFoundAsync();
+            return;
+        }
 
         loanToEdit.Date = req.Date;
         loanToEdit.PlannedReturningDate = req.PlannedReturningDate;
         loanToEdit.EffectiveReturningDate = req.EffectiveReturningDate;
+        loanToEdit.BookId = req.BookId;
+        loanToEdit.UserId = req.UserId;
 
         await libraryDbContext.SaveChangesAsync(ct);
 
@@ -39,6 +63,8 @@ public class UpdateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             Date = req.Date,
             PlannedReturningDate = req.PlannedReturningDate,
             EffectiveReturningDate = req.EffectiveReturningDate,
+            BookId = req.BookId,
+            UserId = req.UserId
         };
 
         await Send.OkAsync(responseDto, ct);

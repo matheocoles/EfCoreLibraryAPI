@@ -6,4 +6,6 @@ public class GetLoanDto
     public DateOnly Date {get; set;}
     public DateOnly PlannedReturningDate {get; set;}
     public DateOnly EffectiveReturningDate {get; set;}
+    public int BookId { get; set; }
+    public int UserId {get; set; }
 }

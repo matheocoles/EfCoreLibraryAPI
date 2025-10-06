@@ -20,7 +20,9 @@ public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) : EndpointWi
                 Id = l.Id,
                 Date = l.Date,
                 PlannedReturningDate = l.PlannedReturningDate,
-                EffectiveReturningDate = l.EffectiveReturningDate
+                EffectiveReturningDate = l.EffectiveReturningDate,
+                BookId = l.BookId,
+                UserId = l.UserId,
             }).ToListAsync(ct);
 
         await Send.OkAsync(responseDto, ct);
