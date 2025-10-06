@@ -1,11 +1,12 @@
-﻿using EfCoreLibraryAPI.DTO.Book.Request;
+﻿using EfCoreLibraryAPI.DTO.Actor.Response;
+using EfCoreLibraryAPI.DTO.Book.Request;
 using EfCoreLibraryAPI.DTO.Book.Response;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Book;
 
-public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<UpdateBookDto, GetBookDto>
+public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<UpdateBookDto, GetBookDto, GetAuthorDto>
 {
     public override void Configure()
     {
@@ -25,10 +26,22 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             await Send.NotFoundAsync(ct);
             return;
         }
+        
+        List<Models.Author> author = await libraryDbContext
+                    .Authors
+                    .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
+                    .ToListAsync();
+                
+                if (author == null)
+                {
+                    await Send.NotFoundAsync();
+                    return;
+                }
 
         bookToEdit.Title = req.Title;
         bookToEdit.ReleaseYear = req.ReleaseYear;
         bookToEdit.ISBN = req.ISBN;
+        bookToEdit.AuthorId = req.AuthorId;
 
         await libraryDbContext.SaveChangesAsync(ct);
 
@@ -37,7 +50,8 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             Id = req.Id,
             Title = req.Title,
             ReleaseYear = req.ReleaseYear,
-            ISBN = req.ISBN
+            ISBN = req.ISBN,
+            AuthorId = req.AuthorId
         };
 
         await Send.OkAsync(responseDto, ct);

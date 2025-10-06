@@ -21,7 +21,8 @@ public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) : EndpointWi
                     Id = b.Id,
                     Title = b.Title,
                     ReleaseYear = b.ReleaseYear,
-                    ISBN = b.ISBN
+                    ISBN = b.ISBN,
+                    AuthorId = b.AuthorId
                 }
             ).ToListAsync(ct);
 

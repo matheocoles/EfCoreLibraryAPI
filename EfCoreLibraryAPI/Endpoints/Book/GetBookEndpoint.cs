@@ -11,11 +11,11 @@ public class GetBookRequest
     public int Id { get; set; }
 }
 
-public class GetUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBookRequest, GetBookDto>
+public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBookRequest, GetBookDto, GetAuthorDto>
 {
     public override void Configure()
     {
-        Get("/api/authors/{@id}", x => new { x.Id });
+        Get("/api/books/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 
@@ -32,6 +32,17 @@ public class GetUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBo
             return;
         }
 
+        List<Models.Author> author = await libraryDbContext
+            .Authors
+            .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
+            .ToListAsync();
+        
+        if (author == null)
+        {
+            await Send.NotFoundAsync();
+            return;
+        }
+        
         GetBookDto responseDto = new()
         {
             Id = req.Id, 
