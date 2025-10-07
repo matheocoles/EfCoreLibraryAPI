@@ -51,7 +51,9 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             Title = req.Title,
             ReleaseYear = req.ReleaseYear,
             ISBN = req.ISBN,
-            AuthorId = req.AuthorId
+            AuthorId = req.AuthorId,
+            AuthorName = req.AuthorName,
+            AuthorFirstName = req.AuthorFirstName,
         };
 
         await Send.OkAsync(responseDto, ct);

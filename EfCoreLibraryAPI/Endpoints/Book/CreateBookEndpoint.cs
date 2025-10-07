@@ -1,12 +1,11 @@
-﻿using EfCoreLibraryAPI.DTO.Actor.Request;
-using EfCoreLibraryAPI.DTO.Book.Request;
+﻿using EfCoreLibraryAPI.DTO.Book.Request;
 using EfCoreLibraryAPI.DTO.Book.Response;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Book;
 
-public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateBookDto, GetBookDto, CreateAuthorDto>
+public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateBookDto, GetBookDto>
 {
     public override void Configure()
     {
@@ -16,17 +15,15 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
 
     public override async Task HandleAsync(CreateBookDto req, CancellationToken ct)
     {
-        List<Models.Author> author = await libraryDbContext
-            .Authors
-            .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
-            .ToListAsync();
+        var author = await libraryDbContext.Authors
+            .FirstOrDefaultAsync(a => a.Id == req.AuthorId, ct);
         
         if (author == null)
         {
-            await Send.NotFoundAsync();
+            await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         Models.Book book = new()
         {
             Title = req.Title,
@@ -35,10 +32,11 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             AuthorId = req.AuthorId
         };
         
+        
         libraryDbContext.Books.Add(book);
         await libraryDbContext.SaveChangesAsync(ct);
         
-        Console.WriteLine("LIvre créé avec succès");
+        Console.WriteLine("Livre créé avec succès");
 
         GetBookDto responseDto = new()
         {
@@ -46,7 +44,9 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             Title = req.Title,
             ReleaseYear = req.ReleaseYear,
             ISBN = req.ISBN,
-            AuthorId = req.AuthorId
+            AuthorId = req.AuthorId,
+            AuthorName = req.AuthorName,
+            AuthorFirstName = req.AuthorFirstName
         };
 
         await Send.OkAsync(responseDto, ct);

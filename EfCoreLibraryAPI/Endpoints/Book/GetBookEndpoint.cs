@@ -23,6 +23,7 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBo
     {
         Models.Book? book = await libraryDbContext
             .Books
+            .Include(b => b.Author)
             .SingleOrDefaultAsync(b => b.Id == req.Id, cancellationToken: ct);
 
         if (book == null)
@@ -32,16 +33,16 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBo
             return;
         }
 
-        List<Models.Author> author = await libraryDbContext
-            .Authors
-            .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
-            .ToListAsync();
-        
-        if (author == null)
-        {
-            await Send.NotFoundAsync();
-            return;
-        }
+        // List<Models.Author> author = await libraryDbContext
+        //     .Authors
+        //     .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
+        //     .ToListAsync();
+        //
+        // if (author == null)
+        // {
+        //     await Send.NotFoundAsync();
+        //     return;
+        // }
         
         GetBookDto responseDto = new()
         {
@@ -49,6 +50,9 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBo
             Title = book.Title, 
             ReleaseYear = book.ReleaseYear,
             ISBN = book.ISBN,
+            AuthorId = book.AuthorId,
+            AuthorName = book.Author.Name,
+            AuthorFirstName = book.Author.FirstName,
         };
 
         await Send.OkAsync(responseDto, ct);

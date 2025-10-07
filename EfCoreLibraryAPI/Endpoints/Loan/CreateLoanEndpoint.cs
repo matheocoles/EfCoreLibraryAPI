@@ -38,11 +38,12 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             return;
         }
         
+        var plannedReturningDate = req.Date.AddMonths(2);
+        
         Models.Loan loan = new ()
         {
             Date = req.Date,
-            PlannedReturningDate = req.PlannedReturningDate,
-            EffectiveReturningDate = req.EffectiveReturningDate,
+            //PlannedReturningDate = req.PlannedReturningDate,
             BookId = req.BookId,
             UserId = req.UserId
         };
@@ -56,8 +57,7 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
         {
             Id = loan.Id,
             Date = req.Date,
-            PlannedReturningDate = req.PlannedReturningDate,
-            EffectiveReturningDate = req.EffectiveReturningDate,
+            PlannedReturningDate = plannedReturningDate ,
             BookId = req.BookId,
             UserId = req.UserId
         };

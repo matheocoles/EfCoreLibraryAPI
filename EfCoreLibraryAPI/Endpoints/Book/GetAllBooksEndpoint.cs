@@ -16,13 +16,16 @@ public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) : EndpointWi
     public override async Task HandleAsync(CancellationToken ct)
     {
         List<GetBookDto> responseDto = await libraryDbContext.Books
+            .Include(b => b.Author)
             .Select(b => new GetBookDto()
                 {
                     Id = b.Id,
                     Title = b.Title,
                     ReleaseYear = b.ReleaseYear,
                     ISBN = b.ISBN,
-                    AuthorId = b.AuthorId
+                    AuthorId = b.AuthorId,
+                    AuthorName = b.Author!.Name,
+                    AuthorFirstName = b.Author!.FirstName,
                 }
             ).ToListAsync(ct);
 
