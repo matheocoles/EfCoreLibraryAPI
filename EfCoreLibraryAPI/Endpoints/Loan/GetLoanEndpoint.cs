@@ -13,7 +13,7 @@ public class GetLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetLo
 {
     public override void Configure()
     {
-        Get("/api/loan/{@id}", x => new {x.Id});
+        Get("/api/loans/{@id}", x => new {x.Id});
         AllowAnonymous();
     }
 
