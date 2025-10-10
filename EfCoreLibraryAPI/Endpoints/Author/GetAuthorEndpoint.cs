@@ -33,8 +33,8 @@ public class GetAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetA
 
         GetAuthorDto responseDto = new()
         {
-            Id = req.Id, 
-            Name = author.Name, 
+            Id = req.Id,
+            Name = author.Name,
             FirstName = author.FirstName
         };
 

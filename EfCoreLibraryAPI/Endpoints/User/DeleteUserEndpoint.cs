@@ -8,7 +8,7 @@ public class DeleteUserRequest
     public int Id { get; set; }
 }
 
-public class DeleteUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<DeleteUserRequest>
+public class DeleteUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<DeleteUserRequest>
 {
     public override void Configure()
     {
@@ -28,10 +28,10 @@ public class DeleteUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<De
             await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         libraryDbContext.Users.Remove(userToDelete);
         await libraryDbContext.SaveChangesAsync(ct);
-        
+
         await Send.NoContentAsync(ct);
     }
 }

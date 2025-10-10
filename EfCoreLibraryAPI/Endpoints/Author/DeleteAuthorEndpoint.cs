@@ -8,14 +8,14 @@ public class DeleteAuthorRequest
     public int Id { get; set; }
 }
 
-public class DeleteAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<DeleteAuthorRequest>
+public class DeleteAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<DeleteAuthorRequest>
 {
     public override void Configure()
     {
         Delete("/api/authors/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
-    
+
     public override async Task HandleAsync(DeleteAuthorRequest req, CancellationToken ct)
     {
         Models.Author? authorToDelete = await libraryDbContext

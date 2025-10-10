@@ -11,7 +11,7 @@ public class GetBookRequest
     public int Id { get; set; }
 }
 
-public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBookRequest, GetBookDto, GetAuthorDto>
+public class GetBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetBookRequest, GetBookDto, GetAuthorDto>
 {
     public override void Configure()
     {
@@ -32,11 +32,11 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBo
             await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         GetBookDto responseDto = new()
         {
-            Id = req.Id, 
-            Title = book.Title, 
+            Id = req.Id,
+            Title = book.Title,
             ReleaseYear = book.ReleaseYear,
             Isbn = book.Isbn,
             AuthorId = book.AuthorId,

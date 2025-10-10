@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) : EndpointWithoutRequest<List<GetLoanDto>>
+public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) :EndpointWithoutRequest<List<GetLoanDto>>
 {
     public override void Configure()
     {

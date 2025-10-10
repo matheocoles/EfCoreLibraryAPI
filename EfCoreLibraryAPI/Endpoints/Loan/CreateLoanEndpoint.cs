@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateLoanDto, GetLoanDto>
+public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<CreateLoanDto, GetLoanDto>
 {
     public override void Configure()
     {
@@ -24,36 +24,36 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             await Send.NotFoundAsync();
             return;
         }
-        
+
         var user = await libraryDbContext.Users
             .SingleOrDefaultAsync(b => b.Id == req.UserId, ct);
-        
+
         if (user == null)
         {
             await Send.NotFoundAsync();
             return;
         }
-        
+
         var plannedReturningDate = req.Date.AddMonths(2);
-        
-        Models.Loan loan = new ()
+
+        Models.Loan loan = new()
         {
             Date = req.Date,
             PlannedReturningDate = plannedReturningDate,
             BookId = req.BookId,
             UserId = req.UserId
         };
-        
-        
+
+
         libraryDbContext.Loans.Add(loan);
         await libraryDbContext.SaveChangesAsync(ct);
-        
+
         Console.WriteLine("Empreint créé avec succès !");
-        
-        
+
+
         var responseDto = new GetLoanDto
         {
-            Id = loan.Id ,
+            Id = loan.Id,
             Date = loan.Date,
             PlannedReturningDate = plannedReturningDate,
             BookId = book.Id,

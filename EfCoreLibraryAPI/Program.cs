@@ -16,4 +16,4 @@ app.UseFastEndpoints().UseSwaggerGen();
 
 app.UseHttpsRedirection();
 
-app.Run(); 
+app.Run();

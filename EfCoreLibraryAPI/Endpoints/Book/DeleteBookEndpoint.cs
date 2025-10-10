@@ -8,14 +8,14 @@ public class DeleteBookRequest
     public int Id { get; set; }
 }
 
-public class DeleteBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<DeleteBookRequest>
+public class DeleteBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<DeleteBookRequest>
 {
     public override void Configure()
     {
         Delete("/api/books/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
-    
+
     public override async Task HandleAsync(DeleteBookRequest req, CancellationToken ct)
     {
         Models.Book? bookToDelete = await libraryDbContext

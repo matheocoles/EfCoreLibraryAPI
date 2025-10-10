@@ -9,11 +9,11 @@ public partial class GetLoanRequest
     public int Id { get; set; }
 }
 
-public class GetLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetLoanRequest, GetLoanDto>
+public class GetLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetLoanRequest, GetLoanDto>
 {
     public override void Configure()
     {
-        Get("/api/loans/{@id}", x => new {x.Id});
+        Get("/api/loans/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

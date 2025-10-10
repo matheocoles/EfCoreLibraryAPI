@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.User;
 
-public class GetAllUsersEndpoint(LibraryDbContext libraryDbContext) : EndpointWithoutRequest<List<GetUserDto>> 
+public class GetAllUsersEndpoint(LibraryDbContext libraryDbContext) :EndpointWithoutRequest<List<GetUserDto>>
 {
     public override void Configure()
     {

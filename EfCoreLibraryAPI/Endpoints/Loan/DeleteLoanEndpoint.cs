@@ -8,11 +8,11 @@ public class DeleteLoanRequest
     public int Id { get; set; }
 }
 
-public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<DeleteLoanRequest>
+public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<DeleteLoanRequest>
 {
     public override void Configure()
     {
-        Delete("/api/loans/{@id}", x => new {x.Id});
+        Delete("/api/loans/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

@@ -4,7 +4,7 @@ using FastEndpoints;
 
 namespace EfCoreLibraryAPI.Endpoints.User;
 
-public class CreateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateUserDto, GetUserDto>
+public class CreateUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<CreateUserDto, GetUserDto>
 {
     public override void Configure()
     {
@@ -21,13 +21,13 @@ public class CreateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             Email = req.Email,
             Birthday = req.Birthday
         };
-        
+
         libraryDbContext.Users.Add(user);
         await libraryDbContext.SaveChangesAsync(ct);
-        
+
         Console.WriteLine("Utilisateur créé avec succès !");
 
-        GetUserDto responseDto = new ()
+        GetUserDto responseDto = new()
         {
             Id = user.Id,
             Name = req.Name,

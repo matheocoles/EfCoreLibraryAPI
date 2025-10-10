@@ -9,7 +9,7 @@ public class GetUserRequest
     public int Id { get; set; }
 }
 
-public class GetUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetUserRequest, GetUserDto>
+public class GetUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetUserRequest, GetUserDto>
 {
     public override void Configure()
     {
@@ -30,7 +30,7 @@ public class GetUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetUs
             return;
         }
 
-        GetUserDto responseDto = new ()
+        GetUserDto responseDto = new()
         {
             Id = user.Id,
             Name = user.Name,
@@ -38,7 +38,7 @@ public class GetUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetUs
             Email = user.Email,
             Birthday = user.Birthday
         };
-        
+
         await Send.OkAsync(responseDto, ct);
     }
 }

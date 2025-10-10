@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI;
 
-public class LibraryDbContext : DbContext
+public class LibraryDbContext :DbContext
 {
     public DbSet<Author> Authors { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Loan> Loans { get; set; }
     public DbSet<User> Users { get; set; }
-    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
@@ -21,5 +21,5 @@ public class LibraryDbContext : DbContext
         );
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder){}
+    protected override void OnModelCreating(ModelBuilder modelBuilder) {}
 }

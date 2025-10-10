@@ -2,6 +2,6 @@
 
 public class PatchEffectiveReturnDto
 {
-    public int Id {get; set;}
+    public int Id { get; set; }
     public DateOnly EffectiveReturningDate { get; set; }
 }

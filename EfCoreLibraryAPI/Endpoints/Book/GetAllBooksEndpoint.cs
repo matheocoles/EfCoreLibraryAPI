@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Book;
 
-public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) : EndpointWithoutRequest<List<GetBookDto>>
+public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) :EndpointWithoutRequest<List<GetBookDto>>
 {
     public override void Configure()
     {

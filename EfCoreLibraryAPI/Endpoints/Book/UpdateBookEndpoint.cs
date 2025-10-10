@@ -26,17 +26,17 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         List<Models.Author> author = await libraryDbContext
-                    .Authors
-                    .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
-                    .ToListAsync();
-                
-                if (author == null)
-                {
-                    await Send.NotFoundAsync();
-                    return;
-                }
+            .Authors
+            .Select(a => new Models.Author { Id = a.Id, Name = a.Name })
+            .ToListAsync();
+
+        if (author == null)
+        {
+            await Send.NotFoundAsync();
+            return;
+        }
 
         bookToEdit.Title = req.Title;
         bookToEdit.ReleaseYear = req.ReleaseYear;
@@ -59,4 +59,3 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
         await Send.OkAsync(responseDto, ct);
     }
 }
-

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Book;
 
-public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateBookDto, GetBookDto>
+public class CreateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<CreateBookDto, GetBookDto>
 {
     public override void Configure()
     {
@@ -17,7 +17,7 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
     {
         var author = await libraryDbContext.Authors
             .FirstOrDefaultAsync(a => a.Id == req.AuthorId, ct);
-        
+
         if (author == null)
         {
             await Send.NotFoundAsync(ct);
@@ -31,11 +31,11 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             Isbn = req.Isbn,
             AuthorId = req.AuthorId
         };
-        
-        
+
+
         libraryDbContext.Books.Add(book);
         await libraryDbContext.SaveChangesAsync(ct);
-        
+
         Console.WriteLine("Livre créé avec succès");
 
         GetBookDto responseDto = new()

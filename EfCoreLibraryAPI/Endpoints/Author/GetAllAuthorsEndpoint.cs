@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Author;
 
-public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext) : EndpointWithoutRequest<List<GetAuthorDto>>
+public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext) :EndpointWithoutRequest<List<GetAuthorDto>>
 {
     public override void Configure()
     {

@@ -4,7 +4,7 @@ using FastEndpoints;
 
 namespace EfCoreLibraryAPI.Endpoints.Author;
 
-public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateAuthorDto, GetAuthorDto>
+public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<CreateAuthorDto, GetAuthorDto>
 {
     public override void Configure()
     {
@@ -14,18 +14,18 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)
     {
-        Models.Author author = new ()
+        Models.Author author = new()
         {
             Name = req.Name,
             FirstName = req.FirstName
         };
-        
+
         libraryDbContext.Authors.Add(author);
         await libraryDbContext.SaveChangesAsync(ct);
-        
+
         Console.WriteLine("Auteur créé avec succès !");
 
-        GetAuthorDto responseDto = new ()
+        GetAuthorDto responseDto = new()
         {
             Id = author.Id,
             Name = req.Name,

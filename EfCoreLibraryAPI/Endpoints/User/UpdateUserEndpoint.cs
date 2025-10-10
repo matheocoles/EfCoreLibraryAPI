@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.User;
 
-public class UpdateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<UpdateUserDto, GetUserDto>
+public class UpdateUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<UpdateUserDto, GetUserDto>
 {
     public override void Configure()
     {
-        Put("/api/users/{@id}", x => new {x.Id});
+        Put("/api/users/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 
@@ -25,15 +25,15 @@ public class UpdateUserEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Up
             await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         userToEdit.Name = req.Name;
         userToEdit.FirstName = req.FirstName;
         userToEdit.Email = req.Email;
         userToEdit.Birthday = req.Birthday;
-        
+
         await libraryDbContext.SaveChangesAsync(ct);
 
-        GetUserDto responseDto = new ()
+        GetUserDto responseDto = new()
         {
             Id = req.Id,
             Name = req.Name,

@@ -5,29 +5,30 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class PatchEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) : Endpoint<PatchEffectiveReturnDto, GetLoanDto>
+public class PatchEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) :Endpoint<PatchEffectiveReturnDto, GetLoanDto>
 {
     public override void Configure()
     {
-        Patch("/api/loans/{@id}/effectivereturn", x => new {x.Id}) ;
+        Patch("/api/loans/{@id}/effectivereturn", x => new { x.Id });
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(PatchEffectiveReturnDto req, CancellationToken ct)
     {
-        
-        
+
+
         Models.Loan? loan = await libraryDbContext
             .Loans
             .Include(l => l.Book)
             .Include(l => l.User)
-            .SingleOrDefaultAsync(l => l.Id == req.Id , ct);
+            .SingleOrDefaultAsync(l => l.Id == req.Id, ct);
 
         if (loan == null)
         {
             await Send.NotFoundAsync(ct);
             return;
         }
+
         loan.EffectiveReturningDate = req.EffectiveReturningDate;
 
         await libraryDbContext.SaveChangesAsync(ct);

@@ -26,23 +26,23 @@ public class UpdateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         List<Models.Book> book = await libraryDbContext
             .Books
             .Select(b => new Models.Book { Id = b.Id, Title = b.Title })
             .ToListAsync();
-        
+
         if (book == null)
         {
             await Send.NotFoundAsync();
             return;
         }
-        
+
         List<Models.User> user = await libraryDbContext
             .Users
-            .Select(u => new Models.User { Id = u.Id, Name = u.Name, FirstName = u.FirstName})
+            .Select(u => new Models.User { Id = u.Id, Name = u.Name, FirstName = u.FirstName })
             .ToListAsync();
-        
+
         if (user == null)
         {
             await Send.NotFoundAsync();
