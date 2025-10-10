@@ -1,6 +1,6 @@
 ﻿namespace EfCoreLibraryAPI.DTO.Loan.Request;
 
-public class UpdateEffectiveReturnDto
+public class PatchEffectiveReturnDto
 {
     public int Id {get; set;}
     public DateOnly EffectiveReturningDate { get; set; }

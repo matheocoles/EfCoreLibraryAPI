@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class UpdateEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) : Endpoint<UpdateEffectiveReturnDto, GetLoanDto>
+public class PatchEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) : Endpoint<PatchEffectiveReturnDto, GetLoanDto>
 {
     public override void Configure()
     {
@@ -13,7 +13,7 @@ public class UpdateEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) : 
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(UpdateEffectiveReturnDto req, CancellationToken ct)
+    public override async Task HandleAsync(PatchEffectiveReturnDto req, CancellationToken ct)
     {
         
         
