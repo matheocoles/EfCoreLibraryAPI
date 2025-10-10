@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateLoanDto, GetLoanDto, GetBookDto>
+public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateLoanDto, GetLoanDto>
 {
     public override void Configure()
     {
@@ -34,14 +34,16 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             return;
         }
         
+        var plannedReturningDate = req.Date.AddMonths(2);
+        
         Models.Loan loan = new ()
         {
             Date = req.Date,
+            PlannedReturningDate = plannedReturningDate,
             BookId = req.BookId,
             UserId = req.UserId
         };
         
-        var plannedReturningDate = req.Date.AddMonths(2);
         
         libraryDbContext.Loans.Add(loan);
         await libraryDbContext.SaveChangesAsync(ct);
@@ -51,7 +53,7 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
         
         var responseDto = new GetLoanDto
         {
-            Id = loan.Id,
+            Id = loan.Id ,
             Date = loan.Date,
             PlannedReturningDate = plannedReturningDate,
             BookId = book.Id,
