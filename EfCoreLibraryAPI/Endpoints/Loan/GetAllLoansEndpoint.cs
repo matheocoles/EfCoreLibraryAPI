@@ -14,7 +14,10 @@ public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) : EndpointWi
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        List<GetLoanDto> responseDto = await libraryDbContext.Loans
+        List<GetLoanDto> responseDto = await libraryDbContext
+            .Loans
+            .Include(l => l.Book)
+            .Include(l => l.User)
             .Select(l => new GetLoanDto
             {
                 Id = l.Id,
@@ -22,7 +25,14 @@ public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) : EndpointWi
                 PlannedReturningDate = l.PlannedReturningDate,
                 EffectiveReturningDate = l.EffectiveReturningDate,
                 BookId = l.BookId,
+                BookTitle = l.Book.Title,
+                BookReleaseYear = l.Book.ReleaseYear,
+                BookIsbn = l.Book.Isbn,
                 UserId = l.UserId,
+                UserName = l.User.Name,
+                UserFirstName = l.User.FirstName,
+                UserEmail = l.User.Email,
+                UserBirthday = l.User.Birthday
             }).ToListAsync(ct);
 
         await Send.OkAsync(responseDto, ct);

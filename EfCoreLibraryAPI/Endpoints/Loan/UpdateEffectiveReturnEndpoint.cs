@@ -9,24 +9,25 @@ public class UpdateEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) : 
 {
     public override void Configure()
     {
-        Patch("/api/loans/{id}/effectivereturn");
+        Patch("/api/loans/{@id}/effectivereturn", x => new {x.Id}) ;
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateEffectiveReturnDto req, CancellationToken ct)
     {
-        var id = Route<GetLoanDto>(null, false).Id;
         
-        var loan = await libraryDbContext.Loans
-            .FirstOrDefaultAsync(l => l.Id == id , ct);
+        
+        Models.Loan? loan = await libraryDbContext
+            .Loans
+            .Include(l => l.Book)
+            .Include(l => l.User)
+            .SingleOrDefaultAsync(l => l.Id == req.Id , ct);
 
         if (loan == null)
         {
             await Send.NotFoundAsync(ct);
             return;
         }
-
-        // Mise à jour de la date de retour effective
         loan.EffectiveReturningDate = req.EffectiveReturningDate;
 
         await libraryDbContext.SaveChangesAsync(ct);
@@ -38,7 +39,14 @@ public class UpdateEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) : 
             PlannedReturningDate = loan.PlannedReturningDate,
             EffectiveReturningDate = loan.EffectiveReturningDate,
             BookId = loan.BookId,
-            UserId = loan.UserId
+            BookTitle = loan.Book?.Title,
+            BookReleaseYear = loan.Book.ReleaseYear,
+            BookIsbn = loan.Book.Isbn,
+            UserId = loan.UserId,
+            UserName = loan.User?.Name,
+            UserFirstName = loan.User?.FirstName,
+            UserEmail = loan.User?.Email,
+            UserBirthday = loan.User.Birthday
         };
 
         await Send.OkAsync(response, ct);

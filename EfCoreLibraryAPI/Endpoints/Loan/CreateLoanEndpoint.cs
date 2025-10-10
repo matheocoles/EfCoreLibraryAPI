@@ -16,21 +16,17 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
 
     public override async Task HandleAsync(CreateLoanDto req, CancellationToken ct)
     {
-        List<Models.Book> book = await libraryDbContext
-            .Books
-            .Select(b => new Models.Book { Id = b.Id, Title = b.Title })
-            .ToListAsync();
-        
+        var book = await libraryDbContext.Books
+            .FirstOrDefaultAsync(b => b.Id == req.BookId, ct);
+
         if (book == null)
         {
             await Send.NotFoundAsync();
             return;
         }
         
-        List<Models.User> user = await libraryDbContext
-            .Users
-            .Select(u => new Models.User { Id = u.Id, Name = u.Name, FirstName = u.FirstName})
-            .ToListAsync();
+        var user = await libraryDbContext.Users
+            .SingleOrDefaultAsync(b => b.Id == req.UserId, ct);
         
         if (user == null)
         {
@@ -38,28 +34,35 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             return;
         }
         
-        var plannedReturningDate = req.Date.AddMonths(2);
-        
         Models.Loan loan = new ()
         {
             Date = req.Date,
-            //PlannedReturningDate = req.PlannedReturningDate,
             BookId = req.BookId,
             UserId = req.UserId
         };
+        
+        var plannedReturningDate = req.Date.AddMonths(2);
         
         libraryDbContext.Loans.Add(loan);
         await libraryDbContext.SaveChangesAsync(ct);
         
         Console.WriteLine("Empreint créé avec succès !");
-
-        GetLoanDto responseDto = new ()
+        
+        
+        var responseDto = new GetLoanDto
         {
             Id = loan.Id,
-            Date = req.Date,
-            PlannedReturningDate = plannedReturningDate ,
-            BookId = req.BookId,
-            UserId = req.UserId
+            Date = loan.Date,
+            PlannedReturningDate = plannedReturningDate,
+            BookId = book.Id,
+            BookTitle = book.Title,
+            BookReleaseYear = book.ReleaseYear,
+            BookIsbn = book.Isbn,
+            UserId = user.Id,
+            UserName = user.Name,
+            UserFirstName = user.FirstName,
+            UserEmail = user.Email,
+            UserBirthday = user.Birthday
         };
 
         await Send.OkAsync(responseDto, ct);

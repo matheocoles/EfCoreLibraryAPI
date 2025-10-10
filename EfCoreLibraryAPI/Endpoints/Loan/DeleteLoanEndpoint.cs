@@ -5,20 +5,20 @@ namespace EfCoreLibraryAPI.Endpoints.Loan;
 
 public class DeleteLoanRequest
 {
-    public int Id {get; set;}
+    public int Id { get; set; }
 }
 
 public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<DeleteLoanRequest>
 {
     public override void Configure()
     {
-        Delete("/api/loans/{@id}", x => new {x.Id});
+        Delete("/api/loans/{id}");
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(DeleteLoanRequest req, CancellationToken ct)
     {
-        Models.Loan? loanToDelete = await libraryDbContext
+        var loanToDelete = await libraryDbContext
             .Loans
             .SingleOrDefaultAsync(l => l.Id == req.Id, cancellationToken: ct);
 
@@ -28,10 +28,10 @@ public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<De
             await Send.NotFoundAsync(ct);
             return;
         }
-        
+
         libraryDbContext.Loans.Remove(loanToDelete);
         await libraryDbContext.SaveChangesAsync(ct);
-        
+
         await Send.NotFoundAsync(ct);
     }
 }
