@@ -12,7 +12,7 @@ public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<De
 {
     public override void Configure()
     {
-        Delete("/api/loans/{id}");
+        Delete("/api/loans/{@id}", x => new {x.Id});
         AllowAnonymous();
     }
 
@@ -32,6 +32,6 @@ public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<De
         libraryDbContext.Loans.Remove(loanToDelete);
         await libraryDbContext.SaveChangesAsync(ct);
 
-        await Send.NotFoundAsync(ct);
+        await Send.NoContentAsync(ct);
     }
 }
