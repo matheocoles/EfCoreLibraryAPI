@@ -26,5 +26,5 @@ Flattening
 
 Mettre author dans book et ne pas utiliser le getauthordto dans la gestion de book
 Loan -> que les ID de book et user dans le create
-PlannedReturningDate -> a calculer + 2 mois donc enlver du dto create
+PlannedReturningDate -> a calculer + 2 mois donc enlever du dto create
 EffectiveReturningDate -> ne pas mettre dans le create et mettre un patch => /api/loans/{@id}/effecivereturn
