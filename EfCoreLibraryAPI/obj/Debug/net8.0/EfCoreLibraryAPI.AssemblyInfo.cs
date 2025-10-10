@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EfCoreLibraryAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b03c16d218c7bf1ea25a4f8f1a2b1a15f330c952")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53b27f9b6b5c026733a91df83a9b65f59c511d2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("EfCoreLibraryAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EfCoreLibraryAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
