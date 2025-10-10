@@ -7,5 +7,12 @@ public class GetLoanDto
     public DateOnly PlannedReturningDate {get; set;}
     public DateOnly EffectiveReturningDate {get; set;}
     public int BookId { get; set; }
+    public string? BookTitle { get; set; }
+    public int BookReleaseYear { get; set; }
+    public string? BookIsbn { get; set; }
     public int UserId {get; set; }
+    public string? UserName {get; set; }
+    public string? UserFirstName { get; set; }
+    public string? UserEmail { get; set; }
+    public DateOnly UserBirthday { get; set; }
 }

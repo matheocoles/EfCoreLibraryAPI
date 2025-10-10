@@ -28,7 +28,7 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
         {
             Title = req.Title,
             ReleaseYear = req.ReleaseYear,
-            ISBN = req.ISBN,
+            Isbn = req.Isbn,
             AuthorId = req.AuthorId
         };
         
@@ -43,7 +43,7 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
             Id = book.Id,
             Title = req.Title,
             ReleaseYear = req.ReleaseYear,
-            ISBN = req.ISBN,
+            Isbn = req.Isbn,
             AuthorId = req.AuthorId,
             AuthorName = req.AuthorName,
             AuthorFirstName = req.AuthorFirstName

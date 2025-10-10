@@ -38,10 +38,10 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<GetBo
             Id = req.Id, 
             Title = book.Title, 
             ReleaseYear = book.ReleaseYear,
-            ISBN = book.ISBN,
+            Isbn = book.Isbn,
             AuthorId = book.AuthorId,
-            AuthorName = book.Author.Name,
-            AuthorFirstName = book.Author.FirstName,
+            AuthorName = book.Author?.Name,
+            AuthorFirstName = book.Author?.FirstName,
         };
 
         await Send.OkAsync(responseDto, ct);

@@ -22,7 +22,7 @@ public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) : EndpointWi
                     Id = b.Id,
                     Title = b.Title,
                     ReleaseYear = b.ReleaseYear,
-                    ISBN = b.ISBN,
+                    Isbn = b.Isbn,
                     AuthorId = b.AuthorId,
                     AuthorName = b.Author!.Name,
                     AuthorFirstName = b.Author!.FirstName,

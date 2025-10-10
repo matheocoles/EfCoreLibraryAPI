@@ -40,7 +40,7 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
 
         bookToEdit.Title = req.Title;
         bookToEdit.ReleaseYear = req.ReleaseYear;
-        bookToEdit.ISBN = req.ISBN;
+        bookToEdit.Isbn = req.Isbn;
         bookToEdit.AuthorId = req.AuthorId;
 
         await libraryDbContext.SaveChangesAsync(ct);
@@ -50,7 +50,7 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
             Id = req.Id,
             Title = req.Title,
             ReleaseYear = req.ReleaseYear,
-            ISBN = req.ISBN,
+            Isbn = req.Isbn,
             AuthorId = req.AuthorId,
             AuthorName = req.AuthorName,
             AuthorFirstName = req.AuthorFirstName,

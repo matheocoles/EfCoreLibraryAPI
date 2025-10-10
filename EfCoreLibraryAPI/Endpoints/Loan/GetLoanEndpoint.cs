@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreLibraryAPI.Endpoints.Loan;
 
-public class GetLoanRequest
+public partial class GetLoanRequest
 {
     public int Id { get; set; }
 }
