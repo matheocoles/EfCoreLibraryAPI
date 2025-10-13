@@ -29,6 +29,12 @@ public class PatchEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) :En
             return;
         }
 
+        if (loan.EffectiveReturningDate != null)
+        {
+            await Send.NotFoundAsync(ct);
+            return;
+        }
+
         loan.EffectiveReturningDate = req.EffectiveReturningDate;
 
         await libraryDbContext.SaveChangesAsync(ct);

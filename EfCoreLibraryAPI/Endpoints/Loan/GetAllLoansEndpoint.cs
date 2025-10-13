@@ -28,6 +28,8 @@ public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) :EndpointWit
                 BookTitle = l.Book.Title,
                 BookReleaseYear = l.Book.ReleaseYear,
                 BookIsbn = l.Book.Isbn,
+                BookAuthorName = l.Book.Author.Name,
+                BookAuthorFirstName = l.Book.Author.FirstName,
                 UserId = l.UserId,
                 UserName = l.User.Name,
                 UserFirstName = l.User.FirstName,

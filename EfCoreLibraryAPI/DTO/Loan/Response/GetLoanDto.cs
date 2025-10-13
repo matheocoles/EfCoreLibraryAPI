@@ -10,6 +10,8 @@ public class GetLoanDto
     public string? BookTitle { get; set; }
     public int BookReleaseYear { get; set; }
     public string? BookIsbn { get; set; }
+    public string? BookAuthorName { get; set; }
+    public string? BookAuthorFirstName { get; set; }
     public int UserId { get; set; }
     public string? UserName { get; set; }
     public string? UserFirstName { get; set; }
