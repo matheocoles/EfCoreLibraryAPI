@@ -163,3 +163,4 @@ C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\
 C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\EfCoreLibraryAPI.sourcelink.json
 C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\bin\Debug\net8.0\FastEndpoints.Security.dll
 C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\admin\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll
