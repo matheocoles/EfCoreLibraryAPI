@@ -77,7 +77,7 @@ Process de login
 403 => Send.Forbidden()
 
 
-Roles :
+Roles + colonne dans le login :
 Viewer => GET (All/one)
 admin => Get / Put / Post / Delete / Patch
 librarian => Get + Post, put, patch loan
