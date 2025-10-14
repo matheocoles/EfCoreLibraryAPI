@@ -1,0 +1,83 @@
+Jeton JWT 
+base 64 -> binaire
+
+Processus de login
+client :
+	1- Login + MDP vers le s
+	3- Réponse : 200 -> Jeton JWT vers le s
+		     401/403 	 
+
+Serveur : 
+	2- On vériie le login + MDP vers le c
+
+Processus de communication
+Client :
+	5- Réponse : 200 => Produits
+		     403 => Si pas authorisé
+		     401 => Expiré
+
+Serveur :
+	GET/products
+	4- On vérifie le JWT (HEADER Authorization : Bearrer[JWT]) 
+
+200 => Succès 
+300 => Redirection
+400 => Erreur côté client
+	401 => Echec de connexion
+	403 => Echec de permission
+500 => Erreur côté serveur	
+
+JWT(claims) :
+	-user infos
+	-date émission/expiration
+	-Stateful
+	-Rôles/Scopes
+
+Rôle(Kit de permissions) => User
+	Admin
+	Viewer
+
+Scopes => product : get
+	  product : create
+	  product : update
+
+Registre des révocations => stocker les jetons déconnectés
+			 => Détruire les jetons par anticipation 
+
+AllowAnonymous
+
+Fastendpoint.security
+L'ordre est important
+
+1. Configurer fastendpoint.security (program.cs + paquet nuggets)
+2. Créer l'entité Login :
+Id
+Username
+Full âme
+Password : SHA256, MD5, Bcrypt
+Salt => raimbow tables X, chaîne random 24 caractères
+
+1. MDP clair + salt
+2. 1 => Bcrypt
+3. Hash
+
+3. Préparé le endpoint de login
+4. Retirer les AllowAnonymous
+5. Tester
+
+Process de login
+1. Chercher le Username
+2. Si trouver, MDP de la request + SALT obtenue en 1
+3. Bcrypt verify avec password BDD
+
+2. 3. BIS Si pas trouvé => 401
+               Si MDP erroné => 401
+
+401 => Send.unauthorized()
+403 => Send.Forbidden()
+
+
+Roles :
+Viewer => GET (All/one)
+admin => Get / Put / Post / Delete / Patch
+librarian => Get + Post, put, patch loan
