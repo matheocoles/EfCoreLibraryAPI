@@ -11,7 +11,7 @@ public class UpdateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
 {
     public override void Configure()
     {
-        Put("/api/loans/{@id}", x => new { x.Id });
+        Put("/loans/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

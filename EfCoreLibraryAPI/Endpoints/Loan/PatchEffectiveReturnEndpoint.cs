@@ -9,7 +9,7 @@ public class PatchEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) :En
 {
     public override void Configure()
     {
-        Patch("/api/loans/{@id}/effectivereturn", x => new { x.Id });
+        Patch("/loans/{@id}/effectivereturn", x => new { x.Id });
         AllowAnonymous();
     }
 

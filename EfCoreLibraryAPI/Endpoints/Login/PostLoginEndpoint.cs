@@ -9,7 +9,7 @@ public class PostLoginEndpoint(LibraryDbContext libraryDbContext, IConfiguration
 { 
     public override void Configure()
     {
-        Post("/api/login");
+        Post("/login");
         AllowAnonymous();
     }
 

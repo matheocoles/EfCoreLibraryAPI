@@ -8,7 +8,7 @@ public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext) :EndpointW
 {
     public override void Configure()
     {
-        Get("/api/authors");
+        Get("/authors");
     }
 
     public override async Task HandleAsync(CancellationToken ct)

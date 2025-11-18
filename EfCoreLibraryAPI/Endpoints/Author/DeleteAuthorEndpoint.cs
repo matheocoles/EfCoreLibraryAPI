@@ -12,7 +12,7 @@ public class DeleteAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<D
 {
     public override void Configure()
     {
-        Delete("/api/authors/{@id}", x => new { x.Id });
+        Delete("/authors/{@id}", x => new { x.Id });
     }
 
     public override async Task HandleAsync(DeleteAuthorRequest req, CancellationToken ct)

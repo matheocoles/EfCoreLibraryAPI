@@ -10,7 +10,7 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Cre
 {
     public override void Configure()
     {
-        Post(("/api/loans"));
+        Post(("/loans"));
         AllowAnonymous();
     }
 

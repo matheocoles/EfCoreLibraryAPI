@@ -10,7 +10,7 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<U
 {
     public override void Configure()
     {
-        Put("/api/authors/{@id}", x => new { x.Id });
+        Put("/authors/{@id}", x => new { x.Id });
     }
 
     public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)

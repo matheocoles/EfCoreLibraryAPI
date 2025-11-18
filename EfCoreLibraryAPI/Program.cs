@@ -1,4 +1,3 @@
-using System.Net;
 using EfCoreLibraryAPI;
 using FastEndpoints;
 using FastEndpoints.Security;
@@ -7,19 +6,28 @@ using FastEndpoints.Swagger;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddAuthenticationJwtBearer(s => s.SigningKey = "The secret used to sign tokens")
+    .AddAuthenticationJwtBearer(s => s.SigningKey = "Thesecretusedtosigntokens")
     .AddAuthentication();
     
 builder.Services.AddAuthorization();   
 
-builder.Services.AddFastEndpoints().SwaggerDocument();
+builder.Services.AddFastEndpoints().SwaggerDocument(
+    options => 
+    {
+        options.ShortSchemaNames = true;
+    });
 
 builder.Services.AddDbContext<LibraryDbContext>();
 
 WebApplication app = builder.Build();
 app.UseAuthorization()
     .UseAuthentication();
-app.UseFastEndpoints().UseSwaggerGen();
+app.UseFastEndpoints(options =>
+    {
+        options.Endpoints.RoutePrefix = "API";
+        options.Endpoints.ShortNames = true;
+    }
+    ).UseSwaggerGen();
 
 app.UseHttpsRedirection();
 

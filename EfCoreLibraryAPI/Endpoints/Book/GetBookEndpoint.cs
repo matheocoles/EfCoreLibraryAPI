@@ -15,7 +15,7 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetBoo
 {
     public override void Configure()
     {
-        Get("/api/books/{@id}", x => new { x.Id });
+        Get("/books/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

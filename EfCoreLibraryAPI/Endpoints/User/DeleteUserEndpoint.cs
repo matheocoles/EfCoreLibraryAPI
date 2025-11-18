@@ -12,7 +12,7 @@ public class DeleteUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Del
 {
     public override void Configure()
     {
-        Delete("/api/users/{@id}", x => new { x.Id });
+        Delete("/users/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

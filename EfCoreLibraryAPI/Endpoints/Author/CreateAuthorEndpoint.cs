@@ -8,7 +8,7 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<C
 {
     public override void Configure()
     {
-        Post("/api/authors");
+        Post("/authors");
     }
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)

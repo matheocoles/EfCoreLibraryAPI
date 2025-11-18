@@ -8,7 +8,7 @@ public class CreateUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Cre
 {
     public override void Configure()
     {
-        Post(("/api/users"));
+        Post(("/users"));
         AllowAnonymous();
     }
 

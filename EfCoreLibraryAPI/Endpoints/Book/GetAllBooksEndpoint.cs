@@ -9,7 +9,7 @@ public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) :EndpointWit
 {
     public override void Configure()
     {
-        Get("/api/books");
+        Get("/books");
         AllowAnonymous();
     }
 

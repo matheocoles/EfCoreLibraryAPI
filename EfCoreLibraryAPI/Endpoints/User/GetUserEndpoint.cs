@@ -13,7 +13,7 @@ public class GetUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetUse
 {
     public override void Configure()
     {
-        Get("/api/users/{@id}", x => new { x.Id });
+        Get("/users/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

@@ -9,7 +9,7 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Cre
 {
     public override void Configure()
     {
-        Post("/api/books");
+        Post("/books");
         AllowAnonymous();
     }
 

@@ -8,7 +8,7 @@ public class GetAllUsersEndpoint(LibraryDbContext libraryDbContext) :EndpointWit
 {
     public override void Configure()
     {
-        Get("/api/users");
+        Get("/users");
         AllowAnonymous();
     }
 

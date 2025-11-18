@@ -9,7 +9,7 @@ public class UpdateUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
 {
     public override void Configure()
     {
-        Put("/api/users/{@id}", x => new { x.Id });
+        Put("/users/{@id}", x => new { x.Id });
         AllowAnonymous();
     }
 

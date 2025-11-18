@@ -8,7 +8,7 @@ public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) :EndpointWit
 {
     public override void Configure()
     {
-        Get("/api/loans");
+        Get("/loans");
         AllowAnonymous();
     }
 
