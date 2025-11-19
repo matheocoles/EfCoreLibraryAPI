@@ -9,6 +9,7 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<C
     public override void Configure()
     {
         Post("/authors");
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)

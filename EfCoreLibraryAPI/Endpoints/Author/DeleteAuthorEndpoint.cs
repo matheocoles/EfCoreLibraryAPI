@@ -13,6 +13,7 @@ public class DeleteAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<D
     public override void Configure()
     {
         Delete("/authors/{@id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(DeleteAuthorRequest req, CancellationToken ct)

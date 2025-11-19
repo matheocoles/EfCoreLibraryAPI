@@ -11,6 +11,7 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<U
     public override void Configure()
     {
         Put("/authors/{@id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)

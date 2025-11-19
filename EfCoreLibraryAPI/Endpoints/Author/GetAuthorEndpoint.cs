@@ -15,6 +15,7 @@ public class GetAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetA
     public override void Configure()
     {
         Get("/authors/{@id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(GetAuthorRequest req, CancellationToken ct)
