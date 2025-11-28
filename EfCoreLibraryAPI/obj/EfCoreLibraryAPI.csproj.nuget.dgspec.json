@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj": {}
+    "C:\\Users\\Coles\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj": {
+    "C:\\Users\\Coles\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Coles\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj",
         "projectName": "EfCoreLibraryAPI",
-        "projectPath": "C:\\Users\\admin\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\obj\\",
+        "projectPath": "C:\\Users\\Coles\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj",
+        "packagesPath": "C:\\Users\\Coles\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Coles\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Coles\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -11,7 +11,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policyBuilder =>
-        policyBuilder.WithOrigins("http://localhost:4200")
+        policyBuilder.WithOrigins("http://localhost:61021")
             .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE")
             .AllowAnyHeader()
         )

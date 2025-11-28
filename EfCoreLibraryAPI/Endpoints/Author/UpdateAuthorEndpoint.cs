@@ -28,7 +28,7 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<U
         }
 
         authorToEdit.Name = req.Name;
-        authorToEdit.FirstName = req.FristName;
+        authorToEdit.FirstName = req.FirstName;
 
         await libraryDbContext.SaveChangesAsync(ct);
 
@@ -36,7 +36,7 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext) :Endpoint<U
         {
             Id = req.Id,
             Name = req.Name,
-            FirstName = req.FristName,
+            FirstName = req.FirstName,
         };
 
         await Send.OkAsync(responseDto, ct);
