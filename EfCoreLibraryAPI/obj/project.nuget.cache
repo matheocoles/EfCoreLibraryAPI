@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Gdmid6MsFw8=",
+  "dgSpecHash": "7w2ANXnZ5mQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\Coles\\RiderProjects\\EfCoreLibraryAPI\\EfCoreLibraryAPI\\EfCoreLibraryAPI.csproj",
   "expectedPackageFiles": [
@@ -15,7 +15,7 @@
     "C:\\Users\\Coles\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.18\\microsoft.aspnetcore.authentication.jwtbearer.8.0.18.nupkg.sha512",
-    "C:\\Users\\Coles\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.20\\microsoft.aspnetcore.openapi.8.0.20.nupkg.sha512",
+    "C:\\Users\\Coles\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.19\\microsoft.aspnetcore.openapi.8.0.19.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\microsoft.codeanalysis.common\\4.5.0\\microsoft.codeanalysis.common.4.5.0.nupkg.sha512",
@@ -67,6 +67,7 @@
     "C:\\Users\\Coles\\.nuget\\packages\\nswag.core.yaml\\14.4.0\\nswag.core.yaml.14.4.0.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\nswag.generation\\14.4.0\\nswag.generation.14.4.0.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\nswag.generation.aspnetcore\\14.4.0\\nswag.generation.aspnetcore.14.4.0.nupkg.sha512",
+    "C:\\Users\\Coles\\.nuget\\packages\\passwordgenerator\\2.1.0\\passwordgenerator.2.1.0.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "C:\\Users\\Coles\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.2\\swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
