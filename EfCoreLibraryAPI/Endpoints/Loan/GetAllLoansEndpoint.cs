@@ -9,7 +9,6 @@ public class GetAllLoansEndpoint(LibraryDbContext libraryDbContext) :EndpointWit
     public override void Configure()
     {
         Get("/loans");
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CancellationToken ct)

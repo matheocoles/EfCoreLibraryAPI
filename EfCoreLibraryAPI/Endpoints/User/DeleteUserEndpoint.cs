@@ -13,7 +13,6 @@ public class DeleteUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Del
     public override void Configure()
     {
         Delete("/users/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(DeleteUserRequest req, CancellationToken ct)

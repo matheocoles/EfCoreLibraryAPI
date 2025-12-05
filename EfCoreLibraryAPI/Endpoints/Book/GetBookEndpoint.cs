@@ -16,7 +16,6 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetBoo
     public override void Configure()
     {
         Get("/books/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(GetBookRequest req, CancellationToken ct)

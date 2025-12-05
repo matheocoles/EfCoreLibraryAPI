@@ -14,7 +14,6 @@ public class GetUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetUse
     public override void Configure()
     {
         Get("/users/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(GetUserRequest req, CancellationToken ct)

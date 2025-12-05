@@ -11,7 +11,6 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Cre
     public override void Configure()
     {
         Post(("/loans"));
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateLoanDto req, CancellationToken ct)

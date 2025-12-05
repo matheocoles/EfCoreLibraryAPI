@@ -10,7 +10,6 @@ public class PatchEffectiveReturnEndpoint(LibraryDbContext libraryDbContext) :En
     public override void Configure()
     {
         Patch("/loans/{@id}/effectivereturn", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(PatchEffectiveReturnDto req, CancellationToken ct)

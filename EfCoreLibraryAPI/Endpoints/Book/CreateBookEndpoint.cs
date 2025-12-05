@@ -10,7 +10,6 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Cre
     public override void Configure()
     {
         Post("/books");
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateBookDto req, CancellationToken ct)

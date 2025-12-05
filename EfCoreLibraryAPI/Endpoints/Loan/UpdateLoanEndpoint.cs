@@ -12,7 +12,6 @@ public class UpdateLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
     public override void Configure()
     {
         Put("/loans/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateLoanDto req, CancellationToken ct)

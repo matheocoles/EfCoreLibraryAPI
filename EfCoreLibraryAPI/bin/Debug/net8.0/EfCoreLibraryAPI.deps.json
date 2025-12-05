@@ -12,10 +12,11 @@
           "FastEndpoints": "7.0.1",
           "FastEndpoints.Security": "7.0.1",
           "FastEndpoints.Swagger": "7.0.1",
-          "Microsoft.AspNetCore.OpenApi": "8.0.20",
+          "Microsoft.AspNetCore.OpenApi": "8.0.19",
           "Microsoft.EntityFrameworkCore": "8.0.20",
           "Microsoft.EntityFrameworkCore.Design": "8.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.20",
+          "PasswordGenerator": "2.1.0",
           "Swashbuckle.AspNetCore": "6.6.2"
         },
         "runtime": {
@@ -148,14 +149,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/8.0.20": {
+      "Microsoft.AspNetCore.OpenApi/8.0.19": {
         "dependencies": {
           "Microsoft.OpenApi": "1.6.14"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "assemblyVersion": "8.0.20.0",
-            "fileVersion": "8.0.2025.42002"
+            "assemblyVersion": "8.0.19.0",
+            "fileVersion": "8.0.1925.37204"
           }
         }
       },
@@ -878,6 +879,14 @@
           }
         }
       },
+      "PasswordGenerator/2.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/PasswordGenerator.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.6.2": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "8.0.14",
@@ -1256,12 +1265,12 @@
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.18",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.18.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.OpenApi/8.0.20": {
+    "Microsoft.AspNetCore.OpenApi/8.0.19": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IjWB1Q/Ar8fyfE3cKjybSlpAE++miAkDGbSup0WeFOtZn2vK+myK7RWDJlFdWICLLU50CmmLad91toIJNTrymQ==",
-      "path": "microsoft.aspnetcore.openapi/8.0.20",
-      "hashPath": "microsoft.aspnetcore.openapi.8.0.20.nupkg.sha512"
+      "sha512": "sha512-W3R++XjVxo/hFldbg0IGAFeTA28M3Vagml4/GIIYC/5wYKrO4fdVM2+y/V6Bu6GEHe6OL8E6gcBqPod1OjkoeQ==",
+      "path": "microsoft.aspnetcore.openapi/8.0.19",
+      "hashPath": "microsoft.aspnetcore.openapi.8.0.19.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
@@ -1619,6 +1628,13 @@
       "sha512": "sha512-b1+qdKuThjkuJkL72QiL0ziGiR39O4DgJY7f3C+MnmRGGRjXj4BoEKvJXkZyi6Dn2M7Li/vMVKoHQCaQjrYwlA==",
       "path": "nswag.generation.aspnetcore/14.4.0",
       "hashPath": "nswag.generation.aspnetcore.14.4.0.nupkg.sha512"
+    },
+    "PasswordGenerator/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-G70cCeAOYCk/uTuFw5PBGpYY9kmBZyzld7tphachvyU514PowMRDYyKwTefxIHNGWrhXY2d1DV5B1tDEnTtY3A==",
+      "path": "passwordgenerator/2.1.0",
+      "hashPath": "passwordgenerator.2.1.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.6.2": {
       "type": "package",

@@ -13,7 +13,6 @@ public class DeleteLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Del
     public override void Configure()
     {
         Delete("/loans/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(DeleteLoanRequest req, CancellationToken ct)

@@ -14,7 +14,6 @@ public class GetLoanEndpoint(LibraryDbContext libraryDbContext) :Endpoint<GetLoa
     public override void Configure()
     {
         Get("/loans/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(GetLoanRequest req, CancellationToken ct)

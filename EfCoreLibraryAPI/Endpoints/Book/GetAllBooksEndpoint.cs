@@ -10,7 +10,6 @@ public class GetAllBooksEndpoint(LibraryDbContext libraryDbContext) :EndpointWit
     public override void Configure()
     {
         Get("/books");
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CancellationToken ct)

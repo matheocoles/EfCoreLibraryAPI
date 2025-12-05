@@ -330,3 +330,5 @@ C:\Users\Coles\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\
 C:\Users\Coles\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\EfCoreLibraryAPI.pdb
 C:\Users\Coles\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\EfCoreLibraryAPI.genruntimeconfig.cache
 C:\Users\Coles\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\obj\Debug\net8.0\ref\EfCoreLibraryAPI.dll
+C:\Users\Coles\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\bin\Debug\net8.0\PasswordGenerator.dll
+C:\Users\Coles\RiderProjects\EfCoreLibraryAPI\EfCoreLibraryAPI\bin\Debug\net8.0\global.json

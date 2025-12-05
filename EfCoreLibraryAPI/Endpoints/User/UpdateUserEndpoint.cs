@@ -10,7 +10,6 @@ public class UpdateUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Upd
     public override void Configure()
     {
         Put("/users/{@id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateUserDto req, CancellationToken ct)

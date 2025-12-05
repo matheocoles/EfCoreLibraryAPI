@@ -9,7 +9,6 @@ public class CreateUserEndpoint(LibraryDbContext libraryDbContext) :Endpoint<Cre
     public override void Configure()
     {
         Post(("/users"));
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateUserDto req, CancellationToken ct)
